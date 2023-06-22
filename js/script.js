@@ -30,10 +30,9 @@
  */
 
 //うるせえええ！！
-for (let i = 0; i < 10; i++){
-    console.log("%cここに何も張らないでください！！"+(" ".repeat(i)), "color: red; font-size: 50px;");
+for (let i = 0; i < 10; i++) {
+    console.log("%cここに何も張らないでください！！" + (" ".repeat(i)), "color: red font-size: 50px")
 }
-
 
 /**
  * ボタンの挙動
@@ -52,7 +51,6 @@ $("#do").on("click", function () {
         "\nhttps://nekotenchallenge.pages.dev/"
     twitterShare(text)
 })
-
 $("#github").on("click", function () {
     window.location = "https://github.com/JanMaki/NekotenChallenge"
 })
@@ -91,6 +89,14 @@ const parts = [
     ["眼", "め"],
     ["胸", "むね"],
 ]
+//天使の種類
+const angelTypes = [
+    [90, "天使", "てんし"],
+    [5, "大天使", "だいてんし"],
+    [3, "座天使", "ざてんし"],
+    [2, "智天使", "ちてんし"],
+    [1, "熾天使", "してんし"]
+]
 
 /**
  * ○○天使を作成する
@@ -99,16 +105,32 @@ const parts = [
  */
 function generateAngel() {
     //動物と部位をランダムで抽出
-    let animalIndex = Math.floor(Math.random() * animals.length);
-    let animal = animals[animalIndex];
-    let partIndex = Math.floor(Math.random() * parts.length);
-    const part = parts[partIndex];
+    let animalIndex = Math.floor(Math.random() * animals.length)
+    let animal = animals[animalIndex]
+    let partIndex = Math.floor(Math.random() * parts.length)
+    const part = parts[partIndex]
+
+    //天使の種類を抽選
+    let randomNumber = Math.floor(Math.random() * 100) + 1
+    let angelType
+    let total = 0
+    let angelTypeIndex = 0
+    for (; angelTypeIndex < angelTypes.length; angelTypeIndex++) {
+        angelType = angelTypes[angelTypeIndex]
+        //確率を確認
+        total += angelType[0]
+        if (randomNumber <= total) {
+            break
+        }
+    }
 
     //テキストを作成
-    let text = animal[0] + part[0] + "天使（" + animal[1] + part[1] + "てんし）"
+    let text = animal[0] + part[0] + angelType[1] + "（" + animal[1] + part[1] + angelType[2] + "） "
+    //天使の種類に応じて星を与える
+    text += "☆".repeat(angelTypeIndex + 1)
     //猫耳天使かを確認
     if (animalIndex === 0 && partIndex === 0) {
-        text += "　にゃーん"
+        text += "☆☆☆ にゃーん"
     }
 
     return text
