@@ -124,14 +124,19 @@ function generateAngel() {
         }
     }
 
+    //猫耳天使か
+    let isNekoten = animalIndex === 0 && partIndex === 0
+
+    //星の数
+    let starAmount = angelTypeIndex + 1
+    if (isNekoten) starAmount += 3
+
     //テキストを作成
     let text = animal[0] + part[0] + angelType[1] + "（" + animal[1] + part[1] + angelType[2] + "） "
     //天使の種類に応じて星を与える
-    text += "☆".repeat(angelTypeIndex + 1)
+    text += "★".repeat(starAmount)
     //猫耳天使かを確認
-    if (animalIndex === 0 && partIndex === 0) {
-        text += "☆☆☆ にゃーん"
-    }
+    if (isNekoten) text += "にゃーん"
 
     return text
 }
