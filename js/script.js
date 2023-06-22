@@ -72,7 +72,12 @@ const animals = [
     ["豹", "ひょう"],
     ["豚", "ぶた"],
     ["蛇", "へび"],
-    ["鰐", "わに"]
+    ["鰐", "わに"],
+    ["鴨", "かも"],
+    ["鷹", "たか"],
+    ["鳩", "はと"],
+    ["蝉", "せみ"],
+    ["鮭", "しゃけ"],
 ]
 //部位一覧
 const parts = [
@@ -149,7 +154,7 @@ function generateAngel() {
  * @param url URL
  */
 function twitterShare(text, url) {
-    window.location = "https://twitter.com/share?text=" + text + "&url="+url
+    window.location = "https://twitter.com/share?text=" + text + "&url=" + url
         .replaceAll("#", "%23")
         .replaceAll(" ", "%20")
         .replaceAll("\n", "%0a")
