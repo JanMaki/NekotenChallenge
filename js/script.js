@@ -49,7 +49,7 @@ $("#do").on("click", function () {
         + angels.join("\n") +
         "\n\n#猫耳天使チャレンジ" +
         "\nhttps://nekotenchallenge.pages.dev/"
-    twitterShare(text)
+    twitterShare(text, "https://nekotenchallenge.pages.dev/")
 })
 $("#github").on("click", function () {
     window.location = "https://github.com/JanMaki/NekotenChallenge"
@@ -82,12 +82,12 @@ const parts = [
     ["腕", "うで"],
     ["口", "ぐち"],
     ["唇", "くちびる"],
-    ["舌", "した"],
-    ["尻", "しり"],
-    ["爪", "つめ"],
+    ["舌", "じた"],
+    ["尻", "じり"],
+    ["爪", "づめ"],
     ["指", "ゆび"],
     ["眼", "め"],
-    ["胸", "むね"],
+    ["胸", "むね"]
 ]
 //天使の種類
 const angelTypes = [
@@ -146,9 +146,10 @@ function generateAngel() {
  * 改行とかはいい感じに処理する
  *
  * @param text ツイートする内容
+ * @param url URL
  */
-function twitterShare(text) {
-    window.location = "https://twitter.com/share?text=" + text
+function twitterShare(text, url) {
+    window.location = "https://twitter.com/share?text=" + text + "&url="+url
         .replaceAll("#", "%23")
         .replaceAll(" ", "%20")
         .replaceAll("\n", "%0a")
