@@ -2,3 +2,16 @@ html {
     background-color: aliceblue;
     font-family: 'Noto Sans JP', sans-serif;
 }
+
+.container {
+    padding-bottom: 60px;
+    box-sizing: border-box;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: whitesmoke;
+
+    width: 100%;
+}
