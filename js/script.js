@@ -49,7 +49,7 @@ $("#do").on("click", function () {
         + angels.join("\n") +
         "\n\n#猫耳天使チャレンジ" +
         "\nhttps://nekotenchallenge.pages.dev/"
-    twitterShare(text, "https://nekotenchallenge.pages.dev/")
+    twitterShare(text)
 })
 $("#github").on("click", function () {
     window.location = "https://github.com/JanMaki/NekotenChallenge"
@@ -151,10 +151,9 @@ function generateAngel() {
  * 改行とかはいい感じに処理する
  *
  * @param text ツイートする内容
- * @param url URL
  */
-function twitterShare(text, url) {
-    window.location = "https://twitter.com/share?text=" + text + "&url=" + url
+function twitterShare(text) {
+    window.location = "https://twitter.com/share?text=" + text
         .replaceAll("#", "%23")
         .replaceAll(" ", "%20")
         .replaceAll("\n", "%0a")
