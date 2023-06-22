@@ -38,15 +38,22 @@ for (let i = 0; i < 10; i++) {
  * ボタンの挙動
  */
 $("#do").on("click", function () {
-    //天使生成
-    let angels = []
-    for (let i = 0; i < 5; i++) {
-        angels.push(generateAngel())
+    let data = getData()
+    if (data === "") {
+        //天使生成
+        let angels = []
+        for (let i = 0; i < 5; i++) {
+            angels.push(generateAngel())
+        }
+        data = angels.join("\n")
     }
+
+    //データを保存
+    saveData(data)
 
     //テキストを作成してツイート
     let text = "猫耳天使チャレンジ！\n\n"
-        + angels.join("\n") +
+        + data +
         "\n\n#猫耳天使チャレンジ" +
         "\nhttps://nekotenchallenge.pages.dev/"
     twitterShare(text)
@@ -54,6 +61,7 @@ $("#do").on("click", function () {
 $("#github").on("click", function () {
     window.location = "https://github.com/JanMaki/NekotenChallenge"
 })
+
 
 //動物一覧
 const animals = [
@@ -158,3 +166,23 @@ function twitterShare(text) {
         .replaceAll(" ", "%20")
         .replaceAll("\n", "%0a")
 }
+
+/**
+ * Cookieにデータを保存する
+ *
+ * @param data データの内容
+ */
+function saveData(data) {
+    document.cookie = "data=" + data.replaceAll("\n", "%") + "; max-age=3600";
+}
+
+/**
+ * Cookieからデータを取得する
+ *
+ * @returns {string} データ
+ */
+function getData() {
+    if (document.cookie === "") return ""
+    return document.cookie.split("=")[1].replaceAll("%", "\n")
+}
+
