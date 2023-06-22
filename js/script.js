@@ -43,7 +43,6 @@ $("#do").on("click", function () {
     let angels = []
     for (let i = 0; i < 5; i++) {
         angels.push(generateAngel())
-        console.log(angels)
     }
 
     //テキストを作成してツイート
