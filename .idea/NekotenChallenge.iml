@@ -8,8 +8,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="beacon" level="application" />
     <orderEntry type="library" name="bulma" level="application" />
     <orderEntry type="library" name="jquery-3.7.0" level="application" />
-    <orderEntry type="library" name="all" level="application" />
   </component>
 </module>
